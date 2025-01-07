@@ -1,5 +1,3 @@
-### CM2040 Database Networks and the Web ###
-
  To get started:
 
 * Run ```npm install``` from the project directory to install all the node packages.
