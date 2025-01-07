@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microblogger: Author blog</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome</h1>
+            <a href="/" class="settings-link">Back to Home</a>
+        </div>
+    </header>
+  <div class="login-panel">
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+      <div class="loginform">
+        <label for="LoginUserName">User Name</label>
+        <input type="text" id="LoginUserName" name="LoginUserName" required>
+      </div>
+      <div class="loginform">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="loginform">
+        <label for="username">Author Name</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="loginformactions">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+      <% if (errors && errors.length > 0) { %>
+        <ul>
+            <% errors.forEach(function(error) { %>
+                <li><%= error %></li>
+            <% }) %>
+        </ul>
+      <% } %>
+  </div>
+</body>
+</html>
