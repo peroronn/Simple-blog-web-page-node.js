@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microblogger: Reader Article</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Microblogger: Reader Article</h1>
+            <a href="/reader/home" class="back-link">Go to reader page</a>
+        </div>
+    </header>
+    <main>
+        <section class="author-einfo">
+            <h4><%= article.BlogTitle %></h4>
+            <h5><%= article.BlogSubTitle %></h5>
+            <h6><%= article.UserName %></h6>
+        </section>
+        <section class="article">
+            <h2>Article</h2>
+            <p><strong>Title:</strong> <br> <%= article.ArticleTitle %></p>
+            <p><strong>Subtitle:</strong> <br> <%= article.ArticleSubtitle %></p>
+            <p><strong>Text:</strong><br> <%= article.ArticleText %></p>
+            <p><strong>Like:</strong> <%= article.NoOfLikes %></p>
+            <form action="/reader/like-article" method="POST">
+                <input type="hidden" name="articleID" value="<%= article.ArticleID %>">
+                <button type="submit" class="like-button">Like</button>
+            </form>
+            <br>
+            <form action="/reader/update-comment" method="POST">
+                <input type="hidden" name="articleID" value="<%= article.ArticleID %>">
+                <label for="comment">Comment:</label>
+                <textarea id="CommentsText" name="CommentsText" rows="2" required style="width: 100%;"></textarea>
+                <div class="button-group">
+                    <button type="submit" class="comment-button">Comment</button>
+                </div>
+            </form>
+
+            <div class="comments-section">
+                <h2>Comments</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Comment Text</th>
+                            <th>Date Commented</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% comments.forEach(comment => { %>
+                            <tr>
+                                <td><%= comment.CommentsText %></td>
+                                <td><%= comment.DateCommented %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

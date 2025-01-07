@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microblogger: Author Create Article</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Microblogger: Author Create Article</h1>
+            <a href="/author/home?blogID=<%= blog.BlogID %>" class="back-link">Back</a>
+        </div>
+    </header>
+    <main>
+        <section class="author-einfo">
+            <h4><%= blog.BlogTitle %></h4>
+            <h5><%= blog.BlogSubTitle %></h5>
+            <h6><%= blog.UserName %></h6>
+        </section>
+        <section class="edit-article">
+            <h2>Create New Draft Article</h2>
+            <form action="/author/create-draft" method="POST">
+                <input type="hidden" name="blogID" value="<%= blog.BlogID %>">
+                <input type="hidden" name="ArticleStatus" value="draft">
+                <div class="form-group">
+                    <label for="articleTitle">Title</label>
+                    <input type="text" id="articleTitle" name="articleTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="articleSubtitle">Subtitle</label>
+                    <textarea id="articleSubtitle" name="articleSubtitle" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="articleText">Article Body</label>
+                    <textarea id="articleText" name="articleText" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <button type="submit" class="create-button">Create Draft</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
